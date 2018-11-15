@@ -11,7 +11,7 @@ module.exports = app => {
     res.send("Thanks for voting!");
   });
 
-  app.get("/api/surveys/webhooks", (req, res) => {
+  app.post("/api/surveys/webhooks%0A", (req, res) => {
     console.log(req.body);
     res.send({});
   });
@@ -38,7 +38,7 @@ module.exports = app => {
       const user = await req.user.save();
 
       res.send(user);
-    } catch (e) {
+    } catch (err) {
       res.status(422).send(err);
     }
   });
