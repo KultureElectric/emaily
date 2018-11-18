@@ -15,6 +15,17 @@ module.exports = app => {
     res.send(surveys);
   });
 
+  app.put("/api/surveys", requireLogin, async (req, res) => {
+    await Survey.findByIdAndDelete({
+      _id: req.body.surveyId
+    });
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false
+    });
+
+    res.send(surveys);
+  });
+
   app.get("/api/surveys/thanks", (req, res) => {
     res.send("Thanks for voting!");
   });
