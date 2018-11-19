@@ -22,6 +22,5 @@ ReactDOM.render(
 );
 
 // TODO: Improve appearance of app
-// TODO: Allow users to delete surveys
 // TODO: allow users to sort surveys shown
 // TODO: allow users to specify their own sentby email

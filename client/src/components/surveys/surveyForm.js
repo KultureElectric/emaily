@@ -44,6 +44,8 @@ function validate(values) {
 
   errors.recipients = validateEmails(values.recipients || "");
 
+  errors.emailFrom = validateEmails(values.emailFrom || "");
+
   _.each(formFields, ({ name }) => {
     if (!values[name]) {
       errors[name] = "You must provide a value";
