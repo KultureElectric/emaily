@@ -36,7 +36,7 @@ module.exports = app => {
   });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
-    const { title, subject, body, recipients } = req.body;
+    const { title, subject, body, recipients, emailFrom } = req.body;
 
     const survey = new Survey({
       title,
@@ -44,7 +44,8 @@ module.exports = app => {
       body,
       recipients: recipients.split(",").map(email => ({ email: email.trim() })),
       _user: req.user.id,
-      dateSent: Date.now()
+      dateSent: Date.now(),
+      emailFrom
     });
 
     // Great place to send an email!
